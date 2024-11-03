@@ -1,5 +1,6 @@
 from sympy import totient
 import math
+from tqdm import tqdm
 
 message = 'hello world!'
 
@@ -10,16 +11,16 @@ for char in message:
 
 p=1009
 q=3643
-n = (p-1) * (q-1)
+n = p * q
 # 求n的欧拉函数
-fai_n = totient(n)
+fai_n = (p-1) * (q-1)
 
 result = {
     'e':[],
     'x':[]
 }
 
-for e in range(2, fai_n):
+for e in tqdm(range(2, fai_n)):
     # 判断e是否和fai_n互素
     if math.gcd(e, fai_n) == 1:
         x=0
